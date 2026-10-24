@@ -1,0 +1,38 @@
+{
+  "name": "second-brain-ai-router",
+  "version": "1.0.0",
+  "description": "> Your AI-powered Second Brain and Chief of Staff",
+  "private": true,
+  "type": "module",
+  "main": "integrations/ai-note-router/dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "lint": "npm run check && npm run docs:check",
+    "test": "npm run build && node --test integrations/ai-note-router/dist/**/*.test.js",
+    "docs:check": "node integrations/ai-note-router/scripts/check-core-docs.mjs",
+    "perf:router": "node integrations/ai-note-router/scripts/perf-router.mjs",
+    "start": "node integrations/ai-note-router/dist/index.js",
+    "serve": "node integrations/ai-note-router/dist/index.js --serve",
+    "replay": "node integrations/ai-note-router/dist/index.js --replay",
+    "linear-sync-index": "node integrations/ai-note-router/dist/index.js --sync-linear-index",
+    "router-health": "node integrations/ai-note-router/scripts/health-check.mjs",
+    "ingest-manual": "node integrations/ai-note-router/dist/index.js --ingest-manual",
+    "serve-fireflies-adapter": "node integrations/ai-note-router/dist/adapter/index.js",
+    "fireflies-backfill": "node integrations/ai-note-router/dist/adapter/index.js --backfill",
+    "granola-poll": "node integrations/ai-note-router/dist/index.js --poll-granola-api",
+    "task-report": "zsh -lc 'set -a; [ -f .env ] && source .env; set +a; python3 integrations/linear-vault-sync/report_tasks.py --vault-path . --hours 24 --include-linear'",
+    "task-report-daily": "zsh -lc 'set -a; [ -f .env ] && source .env; set +a; python3 integrations/linear-vault-sync/report_tasks.py --vault-path . --mode daily --include-linear --post-slack'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.secondbrain.log-rotate</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/path/to/second-brain/integrations/ai-note-router/scripts/rotate-logs.sh</string>
+  </array>
+
+  <!-- Check every 15 minutes, and once at login. -->
+  <key>StartInterval</key>
+  <integer>900</integer>
+  <key>RunAtLoad</key>
+  <true/>
+
+  <!-- The script is silent unless it rotates or prunes; that output lands here
+       (and this file is itself covered by the SecondBrain-*.log cap). -->
+  <key>StandardOutPath</key>
+  <string>/Users/YOUR_USERNAME/Library/Logs/SecondBrain-LogRotate.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOUR_USERNAME/Library/Logs/SecondBrain-LogRotate.log</string>
+</dict>
+</plist>

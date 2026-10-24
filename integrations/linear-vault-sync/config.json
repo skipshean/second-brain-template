@@ -1,0 +1,44 @@
+{
+  "linear_api_url": "https://api.linear.app/graphql",
+  "linear_push_owner_allowlist": {
+    "names": ["alex morgan", "alex"],
+    "emails": ["you@example.com"]
+  },
+  "team_mapping": {
+    "my-company": { "id": "<linear-team-uuid>", "key": "MYC" },
+    "acme": { "id": "<linear-team-uuid>", "key": "ACM" }
+  },
+  "status_mapping": {
+    "tasks": {
+      "vault_to_linear": {
+        "pending": "unstarted",
+        "in-progress": "started",
+        "complete": "completed",
+        "cancelled": "cancelled"
+      },
+      "linear_to_vault": {
+        "unstarted": "pending",
+        "started": "in-progress",
+        "completed": "complete",
+        "cancelled": "cancelled"
+      }
+    },
+    "projects": {
+      "vault_to_linear": {
+        "active": "In Progress",
+        "paused": "Backlog",
+        "complete": "Completed",
+        "archived": "Canceled"
+      },
+      "linear_to_vault": {
+        "In Progress": "active",
+        "Backlog": "paused",
+        "Planned": "active",
+        "Completed": "complete",
+        "Canceled": "archived"
+      }
+    }
+  },
+  "sync_folders": ["tasks", "projects"],
+  "vault_path": "."
+}

@@ -1,0 +1,97 @@
+default_authority: fireflies
+
+authority_overrides:
+  projects: {}
+  clients:
+    # Email domain -> { linear_team, linear_project, person_card }
+    # Used when a participant's email domain matches but no people/*.md card is found.
+    # "acme.com":
+    #   linear_team: "Acme"
+    #   linear_project: "Website Build"
+    #   person_card: "people/jordan-rivera.md"
+    #   display_name: "Acme"
+  # Email address -> same fields; for individuals on generic domains (gmail.com etc.)
+  contacts: {}
+
+routing:
+  infer_team_from_project: true
+  infer_project_from_client: true
+  default_team: null
+  default_project: null
+  fuzzy_auto_apply_score_gap: 0.20
+  # Granola folder name (case-insensitive) -> explicit route. Folders are curated
+  # per client/engagement, so this is a high-confidence signal. Seeded from the
+  # Linear index; verify before trusting. Folders whose names already match a
+  # Linear team/project (and any folder not listed) fall back to the fuzzy hint.
+  folder_routes:
+    # "Acme": { team: "Acme", project: "Website Build" }
+    "Example Folder": { team: "Example Team", project: "Example Project" }
+
+dedupe:
+  enabled: true
+  search_scope: all_linear_issues
+  canonical_strategy: newest_open_issue
+  merge_new_data_into_canonical: true
+
+sources:
+  fireflies:
+    enabled: true
+    connected: false
+  granola:
+    enabled: true
+    connected: false
+  obsidian:
+    enabled: true
+
+notifications:
+  enabled: false
+  slack_webhook_env_var: SLACK_WEBHOOK_URL
+  slack_channel: null
+  cadence: realtime # realtime | hourly | every_3_hours | every_8_hours | daily
+  include_sources: [fireflies, granola]
+  include_systems: [obsidian, linear]
+  include_events: [task_created, daily_report, manual_report]
+  daily_report:
+    enabled: true
+    hour_local: 8
+  on_demand_report:
+    enabled: true
+
+extractor:
+  # Max items emitted by the heuristic fallback. Curated sections are not capped.
+  max_items: 15
+  # prefer | force | off
+  #   prefer: use curated section if present, else heuristic (default)
+  #   force:  require a curated section; return [] if absent
+  #   off:    always use heuristic (debugging)
+  curated_mode: prefer
+  # Heuristic-fallback requires each line to match at least one phrase (case-insensitive).
+  commitment_phrases:
+    - "i'll"
+    - "i will"
+    - "we'll"
+    - "we will"
+    - "send me"
+    - "send over"
+    - "send you"
+    - "get you"
+    - "follow up"
+    - "follow-up"
+    - "track down"
+    - "confirm"
+    - "schedule"
+    - "draft"
+    - "by eow"
+    - "by end of week"
+    - "by tomorrow"
+    - "next week"
+  # Owner classification for grouped rendering (Alex / Client / Parking Lot).
+  owner_groups:
+    self: []  # your own name(s), e.g. [Jordan, Jordan Rivera]
+    client: []  # populated per-engagement; router falls back to "client" for unmatched non-self owners
+    parking_lot_markers:
+      - parking lot
+      - open question
+      - open questions
+      - maybe
+      - someday

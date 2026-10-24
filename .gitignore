@@ -1,0 +1,31 @@
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/
+.obsidian/core-plugins-migration.json
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+
+# Secrets
+.env
+.env.local
+.claude/settings.local.json
+
+# Claude Code worktrees
+.claude/worktrees/
+
+# Node / build output
+node_modules/
+integrations/ai-note-router/dist/
+outputs/ai-note-router/
+
+# AI note router inbox: raw Fireflies/Granola payloads, local-only
+integrations/ai-note-router/inbox/
+
+# Python
+__pycache__/
+*.pyc
