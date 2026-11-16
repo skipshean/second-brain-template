@@ -31,7 +31,7 @@ All files use YAML frontmatter. See [.claude/reference/file-formats.md](.claude/
 | Person-note | `type: person-note`, `source:`, under `people/<name>/legacy/` |
 | Note | `type: note`, `source:`, general legacy-imported notes |
 
-**Passive types** (`project-note`, `person-note`, `note`): informational only — produced by the legacy-vault import (`scripts/legacy-import/`). The auto-commit hook classifies by folder, not `type`, so these don't alter Chief-of-Staff flows.
+**Passive types** (`project-note`, `person-note`, `note`): informational only, for notes imported from an older vault. The auto-commit hook classifies by folder, not `type`, so these don't alter Chief-of-Staff flows.
 
 ## Context Files
 
