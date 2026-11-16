@@ -121,7 +121,7 @@ cd second-brain
 claude
 ```
 
-The `CLAUDE.md` file provides all context automatically. You're ready to go.
+The `AGENTS.md` file (imported by `CLAUDE.md` for Claude Code) provides all context automatically. You're ready to go.
 
 ### Step 7: Test It Out
 
@@ -428,7 +428,8 @@ git log --grep="cos:"
 
 ```
 second-brain/
-├── CLAUDE.md                  # Main project instructions (the "Chief of Staff")
+├── AGENTS.md                  # Main project instructions (the "Chief of Staff")
+├── CLAUDE.md                  # Stub: imports AGENTS.md for Claude Code
 ├── README.md                  # This file
 ├── tasks/                     # Items with due dates, grouped by status
 │   ├── pending/ in-progress/ complete/ cancelled/

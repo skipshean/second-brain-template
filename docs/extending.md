@@ -1,6 +1,6 @@
 # Extending the Vault
 
-The core (folders, `CLAUDE.md`, skills, auto-commit hook) works on its own. These add-ons are optional and ship in `integrations/`. No keys or secrets are included: copy `.env.example` to `.env` and fill in your own.
+The core (folders, `AGENTS.md`, skills, auto-commit hook) works on its own. These add-ons are optional and ship in `integrations/`. No keys or secrets are included: copy `.env.example` to `.env` and fill in your own.
 
 ## Meeting-note ingestion: Fireflies and Granola
 `integrations/ai-note-router/` ingests meeting notes into the vault: it normalizes each note, matches attendees to `people/`, matches the meeting to a `projects/` note, extracts action items as tasks, and de-duplicates by fingerprint. Raw payloads land in a gitignored `inbox/`.

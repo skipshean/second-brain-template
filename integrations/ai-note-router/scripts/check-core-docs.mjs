@@ -7,6 +7,7 @@ const repoRoot = resolve(dirname(new URL(import.meta.url).pathname), "../../..")
 
 const coreDocs = [
   "README.md",
+  "AGENTS.md",
   "CLAUDE.md",
   "integrations/ai-note-router/README.md",
   "integrations/linear-vault-sync/README.md",
